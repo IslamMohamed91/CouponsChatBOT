@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Code</title>
+</head>
+<body>
+    <textarea id="codeToCopy" style="opacity: 0; position: absolute;">
+        Islam24
+    </textarea>
+    <script>
+        function copyCode() {
+            var copyText = document.getElementById("codeToCopy");
+            copyText.select();
+            document.execCommand("copy");
+        }
+        copyCode();
+    </script>
+</body>
+</html>
