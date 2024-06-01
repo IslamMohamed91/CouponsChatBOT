@@ -3,30 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copy Code</title>
+    <title>Copy Coupon Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        #couponCode {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .copy-button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 10px;
+            font-size: 1em;
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    <textarea id="codeToCopy" style="opacity: 0; position: absolute;">Islam24</textarea>
+    <div class="container">
+        <h1>Copy Your Coupon Code</h1>
+        <textarea id="couponCode" readonly>DISCOUNT2024</textarea><br>
+        <button class="copy-button" onclick="copyCouponCode()">Copy Code</button>
+        <div id="message"></div>
+    </div>
     <script>
-        function copyCode() {
-            var copyText = document.getElementById("codeToCopy");
-            copyText.style.opacity = "1";  // Make textarea visible to select content
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);  // For mobile devices
+        function copyCouponCode() {
+            var couponCode = document.getElementById("couponCode");
+            couponCode.select();
+            couponCode.setSelectionRange(0, 99999);  // For mobile devices
 
             try {
                 var successful = document.execCommand("copy");
-                var msg = successful ? 'successful' : 'unsuccessful';
-                console.log('Copy command was ' + msg);
+                var msg = successful ? 'Coupon code copied to clipboard!' : 'Unable to copy';
+                document.getElementById("message").innerText = msg;
             } catch (err) {
-                console.error('Oops, unable to copy', err);
+                document.getElementById("message").innerText = 'Oops, unable to copy';
             }
-
-            copyText.style.opacity = "0";  // Re-hide textarea
         }
-        
-        // Run the copyCode function when the page loads
-        window.onload = copyCode;
     </script>
 </body>
 </html>
